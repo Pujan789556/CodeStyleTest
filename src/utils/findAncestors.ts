@@ -5,7 +5,7 @@ let anyNode: Tree;
 let parents: string[] = [];
 let traversedNodes: string[] = [];
 
-export const findParents = (tree: Tree, node: string): string[] => {
+export const findAncestors = (tree: Tree, node: string): string[] => {
     if(checkNode(tree, node)) return traversedNodes;
     traversedNodes.push(tree.root);
     tree.children.forEach(child => {
@@ -14,7 +14,7 @@ export const findParents = (tree: Tree, node: string): string[] => {
             parents  = [...traversedNodes]
             return;
         }
-        return findParents(child, node);
+        return findAncestors(child, node);
     });
     traversedNodes.pop();
     return parents;
